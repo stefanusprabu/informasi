@@ -1,0 +1,63 @@
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Hi! I am a bot {bot.user}!')
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+
+@bot.command()
+async def hey(ctx):
+    await ctx.send(f"hey, im {bot.user}!")
+
+@bot.command()
+async def hi(ctx, count_hi = 5):
+    await ctx.send("hi" * count_hi)
+
+@bot.command()
+async def mem(ctx):
+    with open('m2l1_meme/Slide2.jpg', 'rb') as f:
+        # Mari simpan file perpustakaan/library Discord yang dikonversi dalam variabel ini!
+        picture = discord.File(f)
+   # Kita kemudian dapat mengirim file ini sebagai tolok ukur!
+    await ctx.send(file=picture)
+
+@bot.command()
+async def cara_membersihkan_rumah_sebagai_remaja(ctx):
+    await ctx.send('''
+- siapkan perlengkapan bersih bersih                   
+- mulai dari bersihkan sampah dan debu                   
+- desinfeksi ruangan                   
+- membersihkan dekorasi dan perabot berbahan kain                   
+- bersihkan perlengkapan bersih bersuh                   
+                '''   )
+    
+
+@bot.command()
+async def apa_kegunaan_dari_desinfeksi_ruangan(ctx):
+    await ctx.send('''
+- mengurangi banyaknya kuman yang adaa di suatu ruangan
+- mengurangi atau menghilangkan jumlah mikroorganisme
+                                                      '''    )
+    
+@bot.command()
+async def apa_itu_mikroorganisme(ctx):
+    await ctx.send('''
+- makhluk hidup kecil yang berbahaya
+- makhluk hidup yang hanya bisa dilihat dari mikroskop
+                   '''                                     )
+
+
+bot.run("TOKEN MU SENDIRI")
